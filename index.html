@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for everything</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hearts {
+            position: fixed;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: float 3s ease-in infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Syakura Wijdan</h1>
+        <img src="https://media1.tenor.com/m/vJAf5t5BIYkAAAAC/dudu-peeking-dudu.gif" 
+             alt="Cute Panda" 
+             class="panda-gif">
+        <p>
+            Aku cuman mau bilang makasii banyak udah jadi energi ambis ku selama di PCC. kayaknya aku ga bakal se-aktif itu kalo bukan karena km. 
+            <span style="color: #477eff;"><i>"You're the reason why I stayed at PCC"</i></span> 
+        </p>
+        <p>
+            Semoga kita masih bisa jadi temen baik ^_^.
+        </p>
+        <button class="btn" onclick="showMessage()">Click Me</button>
+    </div>
+
+    <audio id="myAudio" loop>
+        <source src="assets/memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Inisialisasi audio
+        const audio = document.getElementById('myAudio');
+        let audioAllowed = false;
+
+        // Pop-up permisi musik saat halaman dimuat
+        function showMusicPrompt() {
+            Swal.fire({
+                title: '🎵 Musik Latar',
+                text: 'Mau nyalain musik background?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#477eff',
+                cancelButtonColor: '#ff4757',
+                confirmButtonText: 'Putar Musik',
+                cancelButtonText: 'Nanti saja',
+                background: '#fff0f3'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    audio.play().catch(error => {
+                        Swal.fire('Silahkan klik allow audio di browser! 🔈');
+                    });
+                    audioAllowed = true;
+                }
+            });
+        }
+
+        // Panggil pop-up musik saat halaman siap
+        window.addEventListener('DOMContentLoaded', () => {
+            showMusicPrompt();
+        });
+
+        // Fungsi hearts
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💫';
+            heart.className = 'hearts';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHearts, 300);
+
+        // Fungsi tombol utama
+        function showMessage() {
+            if(!audioAllowed) {
+                Swal.fire('Klik "Putar Musik" dulu ya! 🎧');
+                return;
+            }
+            
+            Swal.fire({
+                title: 'Thanks a lot!',
+                text: 'Take care and wish u all the best syaa - Hanif',
+                icon: 'success',
+                confirmButtonText: 'Close',
+                background: '#fff0f3'
+            });
+        }
+    </script>
+</body>
+</html>
