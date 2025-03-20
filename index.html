@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanks for everything</title>
+    <title>farewell 👋🏻</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="styles.css">
@@ -19,6 +19,23 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+
+        .custom-swal .swal2-icon {
+    background: url('https://media.tenor.com/wBYXIkDX0k4AAAAi/yellow-cute.gif') no-repeat center !important;
+    background-size: 80px !important;
+    border: none !important;
+    width: 100px !important;
+    height: 100px !important;
+    margin: -10px auto 15px !important;
+}
+
+.custom-swal .swal2-success-circular-line {
+    display: none !important;
+}
+
+.custom-swal .swal2-success-fix {
+    display: none !important;
+}
     </style>
 </head>
 
@@ -29,12 +46,12 @@
              alt="Cute Panda" 
              class="panda-gif">
         <p>
-            engga kerasa ya waktu emng secepet itu.. <br>Aku cuman mau bilang makasii banyak udah jadi energi ambis ku selama di PCC. Aku ga bakal se-aktif itu kalo bukan karena km. 
-            <span style="color: #477eff;"><br><i>"You're the reason why I stayed at PCC"</i></span> 
+            engga kerasa ya waktu emng secepet itu.. 🫠 <br>Aku cuman mau bilang makasii banyak udah jadi energi ambis ku selama di PCC. Aku ga bakal se-aktif itu kalo bukan karena km. 
+            <span style="color: #477eff;"><br><i>wkwkwk</i></span> 
         </p>
         <p>
-            Semoga masih bisa temenan wkwkw n <br>
-            Semangattt semester depan udah magang ^_^.
+            Semangattt semester depan udah magang ^_^<br>I hope you're always happy.
+            
         </p>
         <button class="btn" onclick="showMessage()">Click Me</button>
     </div>
@@ -61,7 +78,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     audio.play().catch(error => {
-                        Swal.fire('Silahkan klik allow audio di browser! 🔈');
+                        Swal.fire('klik allow audio di browser 🔈');
                     });
                     audioAllowed = true;
                 }
@@ -90,14 +107,15 @@
         // Tombol Click Me
         function showMessage() {
             if(!audioAllowed) {
-                Swal.fire('Klik "Putar Musik" dulu yaa');
+                Swal.fire('"Putar Musik" dulu yaa');
                 return;
             }
             
             Swal.fire({
                 title: 'Thanks a lot!',
                 text: 'Take care and wish u all the best syaa - Hanif',
-                icon: 'success',
+                customClass: 'custom-swal',
+                showConfirmButton: true,
                 confirmButtonText: 'Close',
                 background: '#fff0f3'
             });
